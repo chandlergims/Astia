@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import PairModal from "./components/PairModal";
+import PortfolioChart from "./components/PortfolioChart";
 import { Copy, ArrowClockwise } from "@phosphor-icons/react";
 
 interface WalletToken {
@@ -152,6 +153,11 @@ export default function Home() {
               </button>
             </div>
           )}
+        </div>
+
+        {/* Portfolio Distribution Chart */}
+        <div className="mb-10">
+          <PortfolioChart />
         </div>
 
         {/* Perpetual Pairs Section */}
