@@ -71,32 +71,35 @@ export default function Home() {
         )}
 
         {!loading && !error && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
             {tokens.map((token) => (
               <div
                 key={token.symbol}
-                className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                className="bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-xl p-3 hover:shadow-lg hover:border-gray-300 transition-all duration-200 cursor-pointer group"
               >
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  {token.symbol}
-                </h3>
-                <div className="space-y-2">
-                  {token.pairs.slice(0, 3).map((pair) => (
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-sm font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                    {token.symbol}
+                  </h3>
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                </div>
+                <div className="space-y-1.5">
+                  {token.pairs.slice(0, 2).map((pair) => (
                     <div
                       key={pair.symbol}
-                      className="flex justify-between items-center text-sm"
+                      className="flex justify-between items-center"
                     >
-                      <span className="text-gray-600">
-                        {pair.baseAsset}/{pair.quoteAsset}
+                      <span className="text-xs text-gray-500 truncate pr-1">
+                        {pair.quoteAsset}
                       </span>
-                      <span className="font-medium text-gray-900">
-                        ${parseFloat(pair.price).toFixed(4)}
+                      <span className="text-xs font-semibold text-gray-900">
+                        ${parseFloat(pair.price).toFixed(2)}
                       </span>
                     </div>
                   ))}
-                  {token.pairs.length > 3 && (
-                    <p className="text-xs text-gray-500 mt-2">
-                      +{token.pairs.length - 3} more pairs
+                  {token.pairs.length > 2 && (
+                    <p className="text-[10px] text-gray-400 mt-1">
+                      +{token.pairs.length - 2} more
                     </p>
                   )}
                 </div>
